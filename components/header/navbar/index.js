@@ -37,9 +37,8 @@ const Navbar = ({ transaparent, nav }) => {
 
   useEffect(() => {
     showButton();
+    window.addEventListener("resize", showButton);
   }, []);
-
-  window.addEventListener("resize", showButton);
 
   return (
     <div
@@ -118,7 +117,10 @@ const Navbar = ({ transaparent, nav }) => {
               {MainMenu.map((value, key) => {
                 return (
                   <Link key={key} href={value.url}>
-                    <div className="w-full px-10 py-5 cursor-pointer animate--buton hover:text-yellow-500 transition duration-300" onClick={closeMobileMenu}>
+                    <div
+                      className="w-full px-10 py-5 cursor-pointer animate--buton hover:text-yellow-500 transition duration-300"
+                      onClick={closeMobileMenu}
+                    >
                       {value?.name}
                     </div>
                   </Link>

@@ -19,6 +19,14 @@ const FooterSitemapMenu = [
     name: "Sign up",
     url: "/sign-up",
   },
+  {
+    name: "About Us",
+    url: "/about-us",
+  },
+  {
+    name: "Contact Us",
+    url: "/contact-us",
+  },
 ];
 
 const FooterInformationMenu = [
