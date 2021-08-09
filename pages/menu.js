@@ -8,16 +8,41 @@ import ProductCard from "../components/productCard";
 
 const MenuPage = () => {
   const [posts, setPosts] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  const fetchData = () => {
+    const postsAPI = "http://127.0.0.1:8000/api/";
+    const categoryAPI = "http://127.0.0.1:8000/api/category/";
+
+    const getPosts = axios.get(postsAPI);
+    const getCategory = axios.get(categoryAPI);
+    axios.all([getPosts, getCategory]).then(
+      axios.spread((...allData) => {
+        const allDataPosts = allData[0].data;
+        const allCategory = allData[1].data;
+
+        console.log(allDataPosts);
+        console.log(allCategory);
+
+        setPosts(allDataPosts)
+        setCategory(allCategory)
+      })
+    );
+  };
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/")
-      .then((res) => {
-        console.log(res);
-        setPosts(res.data);
-      })
-      .catch((err) => console.log(err));
-  });
+    fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("http://127.0.0.1:8000/api/")
+  //     .then((res) => {
+  //       console.log(res);
+  //       setPosts(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // });
   return (
     <div>
       <Header />
@@ -31,6 +56,7 @@ const MenuPage = () => {
             regular_price={post.regular_price}
             description={post.description}
             slug={post.slug}
+            category={post.category}
           />
         ))}
       </div>
