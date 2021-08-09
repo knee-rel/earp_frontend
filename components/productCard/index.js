@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const ProductCard = (props) => {
   return (
-    <Link key={props.id} href={`/product/${encodeURIComponent(props.slug)}`}>
+    <Link key={props.id} href={`/menu-item/${encodeURIComponent(props.slug)}`}>
       <div className="false shadow-lg cursor-pointer bg-gainsboro rounded-2xl animate--button m-6">
         <div className="relative w-full h-36 lg:h-48">
           <div className="object-cover w-full h-full rounded-t-2xl relative overflow-hidden">
