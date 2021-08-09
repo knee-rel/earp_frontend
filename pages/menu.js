@@ -24,8 +24,8 @@ const MenuPage = () => {
         console.log(allDataPosts);
         console.log(allCategory);
 
-        setPosts(allDataPosts)
-        setCategory(allCategory)
+        setPosts(allDataPosts);
+        setCategory(allCategory);
       })
     );
   };
@@ -48,8 +48,9 @@ const MenuPage = () => {
       <Header />
       {/* {console.log(posts)} */}
       <div className="m-10 flex flex-row">
-        {posts.map((post) => (
+        {posts.map((post, key) => (
           <ProductCard
+            key={key}
             id={post.id}
             title={post.title}
             image={post.product_image[0].image}
